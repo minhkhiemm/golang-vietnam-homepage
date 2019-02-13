@@ -25,6 +25,15 @@ export const CardHeading = styled.h4`
   text-transform: capitalize;
 `
 
+export const Hyperlink = styled.a`
+  text-decoration: none;
+  color: ${props => props.theme.card.foreground};
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: ${props => props.theme.card.link};
+  }
+`
+
 export const CardExcerpt = styled.p`
   ${tw`opacity-80 text-sm`};
   line-height: 1.71em;

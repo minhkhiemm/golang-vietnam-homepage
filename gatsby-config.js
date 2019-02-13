@@ -10,10 +10,23 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/sources`,
+        name: 'sources',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [],
       },
     },
     `gatsby-transformer-sharp`,
@@ -46,6 +59,12 @@ module.exports = {
       options: {
         tailwind: true,
         purgeOnly: ['src/css/style.css'], // Purge only tailwind
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
   ],

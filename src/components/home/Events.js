@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Heading from '@/components/Heading'
 import tw from 'tailwind.macro'
-import data from '@/data/events'
 import EventsCard from '@/components/EventCard'
 import Head from './shared/Head'
 
@@ -17,8 +16,8 @@ class Events extends Component {
         <div className="container px-gutter mx-auto">
           <Head title="Events" link="/events" />
 
-          {data.slice(0, 3).map(d => (
-            <EventsCard {...d} key={d.id} />
+          {this.props.data.slice(0, 3).map((event, index) => (
+            <EventsCard {...event} key={index} />
           ))}
         </div>
       </Container>

@@ -1,0 +1,191 @@
+backend:
+  name: git-gateway
+  branch: netlify-cms-integration
+
+media_folder: static/img
+public_folder: /img
+
+display_url: https://golang-vietnam.netlify.com/
+
+collections:
+  - name: 'eventsAndJobs'
+    label: 'Events & Jobs'
+    files:
+      - file: 'sources/events/index.md'
+        label: 'Events'
+        name: 'events'
+        fields:
+          - { label: 'Key', name: 'key', widget: 'hidden', default: 'events' }
+          - {
+              label: 'Event',
+              name: 'list',
+              widget: 'list',
+              fields:
+                [
+                  { label: Name, name: name, required: true, widget: string },
+                  {
+                    label: Location,
+                    name: location,
+                    required: true,
+                    widget: string,
+                  },
+                  {
+                    label: Guests,
+                    name: guests,
+                    required: true,
+                    widget: number,
+                  },
+                  { label: 'Date', name: date, widget: date },
+                ],
+            }
+      - file: 'sources/jobs/index.md'
+        label: 'Jobs'
+        name: 'jobs'
+        fields:
+          - { label: 'Key', name: 'key', widget: 'hidden', default: 'jobs' }
+          - {
+              label: 'Job',
+              name: 'list',
+              widget: 'list',
+              fields:
+                [
+                  { label: Title, name: title, required: true, widget: string },
+                  {
+                    label: Company,
+                    name: company,
+                    required: true,
+                    widget: string,
+                  },
+                  {
+                    label: Location,
+                    name: location,
+                    required: true,
+                    widget: string,
+                  },
+                  {
+                    label: Type,
+                    name: type,
+                    required: true,
+                    widget: select,
+                    options:
+                      [
+                        'Full-time',
+                        'Part-time',
+                        'Remote',
+                        'Remote full-time',
+                        'Remote part-time',
+                      ],
+                    default: 'Full-time',
+                  },
+                  { label: Description, name: desc, widget: string },
+                  { label: 'Link URL', name: linkURL, widget: string },
+                  { label: 'Date', name: date, widget: date },
+                  {
+                    label: 'Is Open',
+                    name: isOpened,
+                    widget: boolean,
+                    default: true,
+                  },
+                ],
+            }
+  - name: 'resources'
+    label: 'Resources'
+    files:
+      - file: 'sources/resources/articles/index.md'
+        label: Articles
+        name: articles
+        fields:
+          [
+            {
+              label: 'Key',
+              name: 'key',
+              widget: 'hidden',
+              default: 'articles',
+            },
+            {
+              required: true,
+              widget: list,
+              label: 'Article',
+              name: 'list',
+              fields:
+                [
+                  { label: Title, name: title, required: true, widget: string },
+                  {
+                    label: Description,
+                    name: desc,
+                    required: true,
+                    widget: string,
+                  },
+                  {
+                    label: 'Link URL',
+                    name: linkURL,
+                    required: true,
+                    widget: string,
+                  },
+                ],
+            },
+          ]
+      - file: 'sources/resources/books/index.md'
+        label: Books
+        name: books
+        fields:
+          [
+            { label: 'Key', name: 'key', widget: 'hidden', default: 'books' },
+            {
+              label: 'Book',
+              name: 'list',
+              required: true,
+              widget: list,
+              fields:
+                [
+                  { label: Title, name: title, required: true, widget: string },
+                  {
+                    label: Description,
+                    name: desc,
+                    required: true,
+                    widget: string,
+                  },
+                  {
+                    label: 'Link URL',
+                    name: linkURL,
+                    required: true,
+                    widget: string,
+                  },
+                ],
+            },
+          ]
+      - file: 'sources/resources/videos/index.md'
+        label: Videos
+        name: videos
+        fields:
+          [
+            { label: 'Key', name: 'key', widget: 'hidden', default: 'videos' },
+            {
+              label: 'Video',
+              name: 'list',
+              required: true,
+              widget: list,
+              fields:
+                [
+                  { label: Title, name: title, required: true, widget: string },
+                  {
+                    label: 'Iframe Link',
+                    name: iframeLink,
+                    required: true,
+                    widget: string,
+                  },
+                  {
+                    label: 'Image',
+                    name: 'image',
+                    widget: 'image',
+                    required: true,
+                  },
+                  {
+                    label: 'Date',
+                    name: 'date',
+                    widget: 'date',
+                    required: true,
+                  },
+                ],
+            },
+          ]

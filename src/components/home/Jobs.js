@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Heading from '@/components/Heading'
 import tw from 'tailwind.macro'
-import data from '@/data/jobs'
 import { Card, CardExcerpt, Dot, PrimaryButton } from '@/shared/styled'
 import { IoIosArrowRoundForward } from 'react-icons/io'
 import { lg } from '@/shared/responsive'
@@ -48,6 +47,9 @@ const Navigator = styled(PrimaryButton)`
   right: 0;
   transform: translateY(-50%);
   ${tw`flex items-center justify-center absolute shadow`};
+  &:disabled {
+    ${tw`opacity-50 pointer-events-none`};
+  }
 `
 
 const Carousel = styled.div`
@@ -73,7 +75,7 @@ const CarouselWrapper = styled.div`
 class Jobs extends Component {
   state = {
     display: 2,
-    items: data,
+    items: this.props.data,
     current: 0,
     translate: 0,
   }
@@ -120,17 +122,11 @@ class Jobs extends Component {
                   itemPadding={itemPadding}
                 >
                   {this.state.items.map(
-                    ({
-                      title,
-                      desc,
-                      from,
-                      id,
-                      location,
-                      company,
-                      toString,
-                      type,
-                    }) => (
-                      <JobCard key={id}>
+                    (
+                      { title, desc, from, location, company, toString, type },
+                      index
+                    ) => (
+                      <JobCard key={index}>
                         <h3>{title}</h3>
                         <JobCardInfo>
                           <div className="font-bold mb-3 mt-5">{company}</div>
@@ -148,7 +144,10 @@ class Jobs extends Component {
                 </CarouselWrapper>
               </Carousel>
 
-              <Navigator onClick={this.next}>
+              <Navigator
+                onClick={this.next}
+                disabled={this.state.items.length <= 2}
+              >
                 <IoIosArrowRoundForward />
               </Navigator>
             </JobCardContainer>
