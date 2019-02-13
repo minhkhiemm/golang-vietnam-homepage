@@ -16,7 +16,7 @@ const Container = styled.footer`
   }
 `
 
-const Footer = () => {
+const Footer = props => {
   return (
     <Container>
       <div className="container mx-auto text-sm px-gutter">
