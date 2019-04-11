@@ -2,7 +2,7 @@
 key: events
 list:
  - date: "2019-04-23T18:30:00+0700"
-   guests: "53"
+   guests: "63"
    location: "VNG Corporation"
    name: "Golang & CloudNative Vietnam Meetup #16"
    link: "https://facebook.com/events/278326139744023"
@@ -17,7 +17,7 @@ list:
    name: "Golang Vietnam Meetup #15"
    link: "https://facebook.com/events/1040543619443588"
  - date: "2018-05-11T18:30:00+0700"
-   guests: "92"
+   guests: "91"
    location: ", , "
    name: "Golang Vietnam Meetup #14 (Ha Noi)"
    link: "https://facebook.com/events/1701571639935879"
