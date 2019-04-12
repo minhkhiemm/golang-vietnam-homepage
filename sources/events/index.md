@@ -2,7 +2,7 @@
 key: events
 list:
  - date: "2019-04-23T18:30:00+0700"
-   guests: "64"
+   guests: "68"
    location: "VNG Corporation, 182 Lê Đại Hành, Phường 15, Quận 11"
    name: "Golang & CloudNative Vietnam Meetup #16"
    link: "https://facebook.com/events/278326139744023"
