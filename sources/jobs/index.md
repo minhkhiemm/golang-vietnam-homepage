@@ -1,1 +1,12 @@
----\nkey: jobs\nlist:\n\r\r- company: Koidra\n\r\r\rdate: 2020-05-14 00:22:54.833524 +0700 +07 m=+1.031630934\n\r\r\rdesc: Fullstack Software Engineer\n\r\r\risOpened: true\n\r\r\rlinkURL: https://google.com\n\r\r\rlocation: Saigon\n\r\r\rtitle: Fullstack Software Engineer\n\r\r\rtype: Fulltime\n---
+---
+key: jobs
+list:
+- company: Koidra
+date: 2020-05-14 00:23:45.251398 +0700 +07 m=+0.804393982
+desc: Fullstack Software Engineer
+isOpened: true
+linkURL: https://google.com
+location: Saigon
+title: Fullstack Software Engineer
+type: Fulltime
+---
