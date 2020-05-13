@@ -1,1 +1,1 @@
----\nkey: jobs\nlist:\n%!s(MISSING)---
+---\nkey: jobs\nlist:\n\r\r- company: Koidra\n\r\r\rdate: Fullstack Software Engineer\n\r\r\rdesc: %!s(bool=true)\n\r\r\risOpened: https://google.com\n\r\r\rlinkURL: Saigon\n\r\r\rlocation: Fullstack Software Engineer\n\r\r\rtitle: Fulltime\n\r\r\rtype: %!s(MISSING)\n---
