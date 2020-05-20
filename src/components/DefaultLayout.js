@@ -1,29 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
-import { createGlobalStyle } from 'styled-components'
-import Header from '@/components/Header'
-import Root from '@/components/root'
-import Footer from '@/components/Footer'
-import styled from 'styled-components'
-import Heading from '@/components/Heading'
-import tw from 'tailwind.macro'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Header from '@/components/Header';
+import Root from '@/components/root';
+import Footer from '@/components/Footer';
+import styled from 'styled-components';
+import Heading from '@/components/Heading';
+import tw from 'tailwind.macro';
+import { GlobalStyle } from '@/shared/styled';
+import { sm } from '@/shared/responsive';
 
 const Container = styled.div`
-  min-height: calc(100vh - 76px - 75px);
-  padding: 90px 0 200px 0;
-`
-
-const GlobalStyle = createGlobalStyle`
-  html, body {
-    color: ${props => props.theme.main.foreground};
-    background-color: ${props => props.theme.main.body};
-  }
-`
+  min-height: calc(100vh - 76px);
+  padding: 150px 0 120px 0;
+  ${sm`padding: 170px 0 180px 0;`}
+`;
 
 const Head = styled.div`
-  ${tw`flex items-end justify-between mb-16`};
-`
+  ${tw`flex md:flex-row flex-col justify-between mb-16`};
+`;
 
 const DefaultLayout = ({ children, title, RightSideComponent }) => {
   return (
@@ -32,23 +26,25 @@ const DefaultLayout = ({ children, title, RightSideComponent }) => {
       <Header />
       <Container>
         <div className="container px-gutter mx-auto">
-          <Head>
-            <Heading>{title}</Heading>
-            {RightSideComponent && <RightSideComponent />}
-          </Head>
+          {title && (
+            <Head>
+              <Heading>{title}</Heading>
+              {RightSideComponent && <RightSideComponent />}
+            </Head>
+          )}{' '}
           {children}
         </div>
       </Container>
 
       <Footer />
     </Root>
-  )
-}
+  );
+};
 
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
-  RightSideComponent: PropTypes.element,
-}
+  title: PropTypes.string,
+  RightSideComponent: PropTypes.any
+};
 
-export default DefaultLayout
+export default DefaultLayout;

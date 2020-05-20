@@ -1,45 +1,42 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React, { Component } from 'react'
-import Logo from '@/components/svg/Logo'
-import styled from 'styled-components'
-import tw from 'tailwind.macro'
-import { Wrapper } from '@/shared/styled'
-import menu from '@/data/menu'
-import { FaCaretDown } from 'react-icons/fa'
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import Logo from '@/components/svg/Logo';
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
+import menu from '@/data/menu';
+import { FaCaretDown } from 'react-icons/fa';
 
 const Container = styled.header`
   padding: 5px 0;
+  transition: all 0.25s ease;
   ${props => `
-    ${
-      props.absolute
-        ? `
-      position: absolute;
-      left: 0;
-      right: 0;
-      z-index: 99;
-    `
-        : ``
-    };    
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 99;
     background-color: ${
-      props.dark
+      props.dark && !props.fixed
         ? props.theme.header.dark.background
         : props.theme.header.background
     };
     box-shadow: ${props.dark ? `none` : `0 1px 2px rgba(0, 0, 0, 0.1)`};
   `}
-`
+`;
 
 const LogoWrapper = styled.div`
   position: relative;
   z-index: 2;
   a {
     color: ${props =>
-      props.dark
+      (props.dark && !props.fixed) || props.open
         ? props.theme.header.dark.foreground
         : props.theme.header.foreground};
   }
-`
+  svg {
+    transition: all 0.25s ease;
+  }
+`;
 
 const Menu = styled.nav`
   ${tw`list-reset`};
@@ -53,6 +50,10 @@ const Menu = styled.nav`
     position: relative;
     padding: 20px 0;
 
+    &.active > a {
+      color: ${props => props.theme.primary}!important;
+    }
+
     &:hover {
       ul {
         opacity: 1;
@@ -61,17 +62,18 @@ const Menu = styled.nav`
     }
   }
   > li > a {
+    transition: all 0.25s ease;
     ${tw`flex items-center`};
     svg {
       margin-left: 2px;
     }
     color: ${props =>
-      props.dark
+      props.dark && !props.fixed
         ? props.theme.header.dark.nav.link.foreground
         : props.theme.header.nav.link.foreground};
     &:hover {
       color: ${props =>
-        props.dark
+        props.dark && !props.fixed
           ? props.theme.header.dark.nav.link.activeForeground
           : props.theme.header.nav.link.activeForeground};
     }
@@ -100,7 +102,7 @@ const Menu = styled.nav`
       }
     }
   }
-`
+`;
 
 const MobileMenu = styled.ul`
   ${tw`list-reset`};
@@ -168,7 +170,7 @@ const MobileMenu = styled.ul`
       color: ${props => props.theme.header.mobileNav.link.active.foreground};
     }
   }
-`
+`;
 
 const BurgerButton = styled.div`
   ${tw`lg:hidden`};
@@ -185,11 +187,11 @@ const BurgerButton = styled.div`
     display: block;
     position: absolute;
     transform-origin: 50% 50%;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
     background-color: ${props =>
       props.open
         ? props.theme.header.mobileNav.foreground
-        : props.dark
+        : props.dark && !props.fixed
         ? props.theme.header.dark.nav.link.foreground
         : props.theme.header.nav.link.foreground};
 
@@ -228,26 +230,92 @@ const BurgerButton = styled.div`
     }
   `
       : ``}
-`
+`;
 
 class Header extends Component {
   state = {
     open: false,
+    fixed: false,
+    current: ''
+  };
+
+  onScroll = () => {
+    const top =
+      (document.documentElement && document.documentElement.scrollTop) ||
+      document.body.scrollTop;
+    if (top > 0 && !this.state.fixed) {
+      this.setState({ fixed: true });
+    } else if (top === 0) {
+      this.setState({ fixed: false });
+    }
+
+    let current = '';
+    this.sections.forEach(({ node }) => {
+      // Start to toggle pagination after reaching the height of 2/5 screen height
+      if (top > node.offsetTop - window.screen.height * 0.2) {
+        current = '/#' + node.id;
+      }
+    });
+
+    this.setState({
+      current
+    });
+  };
+
+  handleLinkClick = href => e => {
+    if (
+      !['/#jobs', '/#news', '/#events'].includes(href) ||
+      !this.props.onePage
+    ) {
+      return;
+    }
+    e.preventDefault();
+    const el = document.querySelector(href.replace('/', ''));
+    if (!el) {
+      return;
+    }
+    window.scrollTo({
+      top: el.offsetTop,
+      behavior: 'smooth'
+    });
+  };
+
+  componentDidMount() {
+    if (this.props.onePage) {
+      document.addEventListener('scroll', this.onScroll);
+      this.sections = ['#jobs', '#news', '#events', '#supporters'].map(
+        selector => ({
+          node: document.querySelector(selector),
+          href: `/${selector}`
+        })
+      );
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.props.onePage) {
+      document.removeEventListener('scroll', this.onScroll);
+    }
   }
 
   toggleOpen = () => {
     this.setState(({ open }) => ({
-      open: !open,
-    }))
-  }
+      open: !open
+    }));
+  };
 
   render() {
-    const { siteTitle, absolute, dark } = this.props
+    const { absolute, dark } = this.props;
     return (
-      <Container absolute={absolute} dark={dark}>
+      <Container absolute={absolute} dark={dark} fixed={this.state.fixed}>
         <div className="container mx-auto px-gutter">
           <div className="flex items-center justify-between -mx-gutter">
-            <LogoWrapper dark={dark || this.state.open} className="px-gutter">
+            <LogoWrapper
+              dark={dark || this.state.open}
+              open={this.state.open}
+              fixed={this.state.fixed}
+              className="px-gutter"
+            >
               <Link to="/">
                 <Logo />
               </Link>
@@ -257,6 +325,7 @@ class Header extends Component {
               <BurgerButton
                 open={this.state.open}
                 onClick={this.toggleOpen}
+                fixed={this.state.fixed}
                 dark={dark}
                 role="button"
                 tabIndex={0}
@@ -270,16 +339,24 @@ class Header extends Component {
               </BurgerButton>
 
               {this.state.open && (
-                <MobileMenu dark={dark} open={this.state.open}>
+                <MobileMenu
+                  dark={dark}
+                  open={this.state.open}
+                  fixed={this.state.fixed}
+                >
                   {menu.map(({ children, name, href }) => (
                     <li key={href}>
-                      <Link to={href}>{name}</Link>
+                      <Link to={href} activeClassName="link-active">
+                        {name}
+                      </Link>
 
                       {Array.isArray(children) && (
                         <ul>
                           {children.map(({ name, href }) => (
                             <li key={href}>
-                              <Link to={href}>{name}</Link>
+                              <Link activeClassName="link-active" to={href}>
+                                {name}
+                              </Link>
                             </li>
                           ))}
                         </ul>
@@ -290,10 +367,17 @@ class Header extends Component {
               )}
 
               <nav className="hidden lg:block">
-                <Menu dark={dark}>
+                <Menu dark={dark} fixed={this.state.fixed}>
                   {menu.map(({ children, name, href }) => (
-                    <li key={href}>
-                      <Link to={href}>
+                    <li
+                      key={href}
+                      className={this.state.current === href ? 'active' : ''}
+                    >
+                      <Link
+                        to={href}
+                        activeClassName="link-active"
+                        onClick={this.handleLinkClick(href)}
+                      >
                         {name} {Array.isArray(children) && <FaCaretDown />}
                       </Link>
 
@@ -314,20 +398,20 @@ class Header extends Component {
           </div>
         </div>
       </Container>
-    )
+    );
   }
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
   absolute: PropTypes.bool,
   dark: PropTypes.bool,
-}
+  onePage: PropTypes.bool
+};
 
 Header.defaultProps = {
-  siteTitle: ``,
   absolute: false,
   dark: false,
-}
+  onePage: false
+};
 
-export default Header
+export default Header;

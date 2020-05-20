@@ -1,42 +1,52 @@
-import React, { Component } from 'react'
-import ReactDOM from 'react-dom'
-import styled, { keyframes } from 'styled-components'
-import tw from 'tailwind.macro'
-import PropTypes from 'prop-types'
-import { withPrefix } from 'gatsby'
-import { FaPlayCircle, FaCircleNotch } from 'react-icons/fa'
-import { MdClose } from 'react-icons/md'
-import dayjs from 'dayjs'
+import React, {
+  Component
+} from 'react';
+import ReactDOM from 'react-dom';
+import styled, {
+  keyframes
+} from 'styled-components';
+import tw from 'tailwind.macro';
+import PropTypes from 'prop-types';
+import {
+  withPrefix
+} from 'gatsby';
+import {
+  FaPlayCircle
+} from 'react-icons/fa';
+import {
+  MdClose
+} from 'react-icons/md';
+import dayjs from 'dayjs';
 
-const Container = styled.div`
+const Container = styled.div `
   ${props => `
-    color: ${props.theme.card.foreground};    
+    color: ${props.theme.card.foreground};
     background-color: ${props.theme.card.background};
     box-shadow: ${props.theme.card.boxShadow};
   `}
-`
+`;
 
-const Heading = styled.h4`
+const Heading = styled.h4 `
   ${tw`mb-3 text-base`};
   line-height: 1.62em;
-`
+`;
 
-const Date = styled.h6`
+const Date = styled.h6 `
   font-weight: 400;
   ${tw`text-sm opacity-50`};
-`
+`;
 
-const Preview = styled.div`
+const Preview = styled.div `
   position: relative;
-`
+`;
 
-const PlayIcon = styled.div`
+const PlayIcon = styled.div `
   ${tw`absolute pin flex items-center justify-center opacity-50`};
   color: ${props => props.theme.white};
   font-size: 48px;
-`
+`;
 
-const PopupContainer = styled.div`
+const PopupContainer = styled.div `
   position: fixed;
   left: 0;
   top: 0;
@@ -45,9 +55,9 @@ const PopupContainer = styled.div`
   z-index: 9999999;
   color: white;
   background-color: #000000;
-`
+`;
 
-const IframeWrapper = styled.div`
+const IframeWrapper = styled.div `
   position: absolute;
   left: 50%;
   top: 50%;
@@ -65,11 +75,11 @@ const IframeWrapper = styled.div`
       props.loading
         ? `
     opacity: 0;
-    transform: scale(0.8);      
+    transform: scale(0.8);
     `
         : `
     opacity: 1;
-    transform: scale(1);      
+    transform: scale(1);
     `}
   }
 
@@ -80,18 +90,18 @@ const IframeWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
-`
+`;
 
-const Spin = keyframes`
+const Spin = keyframes `
   from {
       transform: rotate(0deg);
   }
   to {
       transform: rotate(359deg);
   }
-`
+`;
 
-const LoadingIcon = styled.div`
+const LoadingIcon = styled.div `
   position: absolute;
   left: 50%;
   top: 50%;
@@ -105,9 +115,9 @@ const LoadingIcon = styled.div`
   border-radius: 9999px;
   ${tw`flex items-center justify-center`}
   display: ${props => (props.loading ? 'block' : 'none')}
-`
+`;
 
-const CloseButton = styled.button`
+const CloseButton = styled.button `
   border: none;
   background-color: transparent;
   font-size: 32px;
@@ -116,100 +126,147 @@ const CloseButton = styled.button`
   position: absolute;
   color: white;
   padding: 0;
-`
+`;
 
 class VidePopup extends Component {
   state = {
-    loading: true,
-  }
+    loading: true
+  };
 
   componentDidMount() {
     this.ref.onload = () => {
-      this.setState({ loading: false })
-    }
+      this.setState({
+        loading: false
+      });
+    };
     // TODO: should be an UI for error
     this.ref.onerror = () => {
-      this.setState({ loading: false })
-    }
+      this.setState({
+        loading: false
+      });
+    };
 
-    document.addEventListener('keydown', this.closeByEsc)
+    document.addEventListener('keydown', this.closeByEsc);
   }
 
   closeByEsc = e => {
     if (e.key === 'Escape') {
-      this.close()
-      document.removeEventListener('keydown', this.closeByEsc)
+      this.close();
+      document.removeEventListener('keydown', this.closeByEsc);
     }
-  }
+  };
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.closeByEsc)
+    document.removeEventListener('keydown', this.closeByEsc);
   }
 
   close = () => {
-    this.props.onClose()
-  }
+    this.props.onClose();
+  };
 
   render() {
-    return (
-      <PopupContainer>
-        <IframeWrapper loading={this.state.loading}>
-          <div>
-            <iframe ref={node => (this.ref = node)} src={this.props.link} />
-          </div>
-        </IframeWrapper>
-        <LoadingIcon loading={this.state.loading} />
-        <CloseButton onClick={this.close} aria-label="close video popup">
-          <MdClose />
-        </CloseButton>
-      </PopupContainer>
-    )
+    return ( <
+      PopupContainer >
+      <
+      IframeWrapper loading = {
+        this.state.loading
+      } >
+      <
+      div >
+      <
+      iframe ref = {
+        node => (this.ref = node)
+      }
+      src = {
+        this.props.link
+      }
+      title = "Video Popup" /
+      >
+      <
+      /div> <
+      /IframeWrapper> <
+      LoadingIcon loading = {
+        this.state.loading
+      }
+      /> <
+      CloseButton onClick = {
+        this.close
+      }
+      aria - label = "close video popup" >
+      <
+      MdClose / >
+      <
+      /CloseButton> <
+      /PopupContainer>
+    );
   }
 }
 
-const Image = styled.div`
+const Image = styled.div `
   padding-bottom: 62.83%;
   height: 0;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   background-image: url(${props => props.url});
-`
+`;
 
 class VideoCard extends Component {
   openVideo = () => {
-    this.holder = document.createElement('div')
-    document.body.appendChild(this.holder)
-    ReactDOM.render(
-      <VidePopup link={this.props.iframeLink} onClose={this.closeVideo} />,
+    this.holder = document.createElement('div');
+    document.body.appendChild(this.holder);
+    ReactDOM.render( <
+      VidePopup link = {
+        this.props.iframeLink
+      }
+      onClose = {
+        this.closeVideo
+      }
+      />,
       this.holder
-    )
-  }
+    );
+  };
 
   closeVideo = () => {
-    document.body.removeChild(this.holder)
-  }
+    document.body.removeChild(this.holder);
+  };
 
   render() {
-    const { image, title, date, iframeLink } = this.props
-    return (
-      <Container>
-        <Preview onClick={this.openVideo}>
-          <Image url={withPrefix(image)} />
-          <PlayIcon
-            role="button"
-            aria-label="open video popup"
-            aria-haspopup="true"
-          >
-            <FaPlayCircle />
-          </PlayIcon>
-        </Preview>
-        <div className="p-6">
-          <Heading>{title}</Heading>
-          <Date>{dayjs(date).format('DD MMM, YYYY')}</Date>
-        </div>
-      </Container>
-    )
+    const {
+      image,
+      title,
+      date
+    } = this.props;
+    return ( <
+      Container >
+      <
+      Preview onClick = {
+        this.openVideo
+      } >
+      <
+      Image url = {
+        withPrefix(image)
+      }
+      /> <
+      PlayIcon role = "button"
+      aria - label = "open video popup"
+      aria - haspopup = "true" >
+      <
+      FaPlayCircle / >
+      <
+      /PlayIcon> <
+      /Preview> <
+      div className = "p-6" >
+      <
+      Heading > {
+        title
+      } < /Heading> <
+      Date > {
+        dayjs(date).format('DD MMM, YYYY')
+      } < /Date> <
+      /div> <
+      /Container>
+    );
   }
 }
 
@@ -217,7 +274,7 @@ VideoCard.propTypes = {
   image: PropTypes.string,
   title: PropTypes.string,
   date: PropTypes.string,
-  iframeLink: PropTypes.string,
-}
+  iframeLink: PropTypes.string
+};
 
-export default VideoCard
+export default VideoCard;

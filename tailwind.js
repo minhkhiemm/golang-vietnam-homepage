@@ -24,7 +24,7 @@ View the full documentation at https://tailwindcss.com.
 |
 */
 
-let defaultConfig = require('tailwindcss/defaultConfig')()
+// let defaultConfig = require('tailwindcss/defaultConfig')()
 
 /*
 |-------------------------------------------------------------------------------
@@ -656,6 +656,7 @@ module.exports = {
     '16': '4rem',
     '20': '5rem',
     '24': '6rem',
+    '28': '7.5rem',
     '32': '8rem',
     gutter: '12px',
     'half-gutter': '6px',
@@ -693,6 +694,7 @@ module.exports = {
     '16': '4rem',
     '20': '5rem',
     '24': '6rem',
+    '26': '7rem',
     '32': '8rem',
     gutter: '12px',
     'half-gutter': '6px',
