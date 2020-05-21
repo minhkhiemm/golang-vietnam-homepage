@@ -1,20 +1,84 @@
 ---
 key: jobs
 list:
-  - company: Grab
-    date: 2019-03-07T14:43:09.832Z
-    desc: Grab is more than just the leading ride-hailing app in Southeast Asia. We use data and technology to improve everything from transportation to payments and logistics across Southeast Asia.
-    isOpened: true
-    linkURL: 'https://github.com/golang-vietnam/job_board/issues/14'
-    location: Saigon
-    title: Backend Engineer
+  - company: 'JX'
+    date: '2020-04-26T13:26:14Z'
+    desc: 'Golang dev'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/31'
+    location: 'HCM'
+    title: 'Golang dev'
+    type: Parttime
+  - company: 'Viettin Group'
+    date: '2020-04-14T07:06:22Z'
+    desc: 'Backend Developer'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/30'
+    location: 'HN'
+    title: 'Backend Developer'
     type: Fulltime
-  - company: Dwarves Foundation
-    date: 2019-04-02T02:29:07.004Z
-    desc: Be the person stands behind all the cool products. We seek for dynamic, proactive, open-minded and passionate talents who are committed to making the best impact ever.
-    isOpened: true
-    linkURL: 'https://dwarves.careers/job/golang-engineer--dwarves-foundation--saigon'
-    location: Saigon
-    title: Golang Engineer
+  - company: 'GoldenCloud'
+    date: '2020-02-20T10:11:57Z'
+    desc: 'Go/Vuejs Developer'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/29'
+    location: 'Others'
+    title: 'Go/Vuejs Developer'
+    type: Fulltime
+  - company: 'Stably'
+    date: '2019-12-31T00:51:36Z'
+    desc: 'Fullstack Engineer'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/26'
+    location: 'HCM'
+    title: 'Fullstack Engineer'
+    type: Fulltime
+  - company: 'JRB'
+    date: '2019-11-27T05:55:21Z'
+    desc: 'GOLANG DEV'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/25'
+    location: 'Others'
+    title: 'GOLANG DEV'
+    type: Parttime
+  - company: 'Bocasay Vietnam'
+    date: '2019-11-14T08:14:10Z'
+    desc: 'Golang Team Lead'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/24'
+    location: 'HN'
+    title: 'Golang Team Lead'
+    type: Fulltime
+  - company: 'BStar Solutions'
+    date: '2019-10-31T09:03:20Z'
+    desc: 'Go Developer'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/23'
+    location: 'HCM'
+    title: 'Go Developer'
+    type: Fulltime
+  - company: 'VNG'
+    date: '2019-08-08T04:16:58Z'
+    desc: 'Senior Software Engineer (Golang)'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/21'
+    location: 'HCM'
+    title: 'Senior Software Engineer (Golang)'
+    type: Fulltime
+  - company: 'Quoine'
+    date: '2019-07-04T05:33:48Z'
+    desc: 'Backend Engineer (Blockchain)'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/20'
+    location: 'HCM'
+    title: 'Backend Engineer (Blockchain)'
+    type: Fulltime
+  - company: 'Exgo'
+    date: '2019-07-02T09:19:18Z'
+    desc: 'Senior Software Engineer'
+    isOpened: 'true'
+    linkURL: 'https://github.com/golang-vietnam/jobs/issues/19'
+    location: 'HCM'
+    title: 'Senior Software Engineer'
     type: Fulltime
 ---
