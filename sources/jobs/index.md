@@ -9,7 +9,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -17,7 +18,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -25,7 +27,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -33,7 +36,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -41,7 +45,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -49,7 +54,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -57,7 +63,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -65,7 +72,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -73,7 +81,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -81,7 +90,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -89,7 +99,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -97,7 +108,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -105,7 +117,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -113,7 +126,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -121,7 +135,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -129,7 +144,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -137,7 +153,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -145,7 +162,8 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false  - company: ''
+   hot: false
+  - company: ''
     date: '0001-01-01T00:00:00Z'
     desc: ''
     isOpened: 'true'
@@ -153,4 +171,5 @@ list:
     location: ''
     title: ''
     type: 
-   hot: false---
+   hot: false
+---
